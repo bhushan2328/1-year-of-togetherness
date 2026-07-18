@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Chapter 9 - The Final Surprise</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+
+.final-photo{
+    width:100%;
+    max-width:700px;
+    border-radius:20px;
+    display:none;
+    margin:30px auto;
+    box-shadow:0 0 40px rgba(255,215,0,.3);
+}
+
+#gift{
+    font-size:120px;
+    cursor:pointer;
+    transition:.5s;
+}
+
+#finalMessage{
+    display:none;
+}
+
+#gift:hover{
+    transform:scale(1.1);
+}
+
+.restart{
+    margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body data-chapter="8">
+
+<header class="chapter-header">
+
+<h3>🎁 Chapter 9 of 9</h3>
+
+</header>
+
+<main class="chapter">
+
+<section class="hero">
+
+<h1 class="hero-title">
+One Last Surprise...
+</h1>
+
+<p class="hero-text">
+
+Before our first anniversary story ends...
+
+there is one final gift waiting for you.
+
+Tap the gift below.
+
+</p>
+
+<div id="gift">
+🎁
+</div>
+
+<img
+id="photo"
+class="final-photo"
+src="assets/images/8.jpg"
+alt="Our Best Memory">
+
+<div id="finalMessage">
+
+<h1 class="hero-title">
+Happy First Anniversary ❤️
+</h1>
+
+<p class="hero-text">
+
+Dear Kajal,
+
+Thank you for every smile,
+every laugh,
+every conversation,
+and every beautiful memory.
+
+Our story began with a simple message on
+
+<strong>07 September 2024.</strong>
+
+Our forever truly began on
+
+<strong>19 July 2025.</strong>
+
+Every day since then has been a blessing.
+
+I don't know what tomorrow will bring.
+
+But I know one thing...
+
+No matter where life takes us,
+
+I will always choose you.
+
+Again.
+
+Again.
+
+And again.
+
+Forever Yours,
+
+<strong>Bhushan ❤️</strong>
+
+</p>
+
+<h2 id="counter">
+Loading...
+</h2>
+
+<div class="restart">
+
+<a href="index.html" class="btn">
+
+❤️ Start Our Story Again
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+
+This isn't the end...
+
+It's only Chapter One of Forever. ❤️
+
+</p>
+
+</footer>
+
+<script>
+
+const gift=document.getElementById("gift");
+const photo=document.getElementById("photo");
+const msg=document.getElementById("finalMessage");
+
+gift.onclick=()=>{
+
+gift.style.display="none";
+
+photo.style.display="block";
+
+msg.style.display="block";
+
+window.scrollTo({
+
+top:photo.offsetTop,
+
+behavior:"smooth"
+
+});
+
+};
+
+</script>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/counter.js"></script>
+
+</body>
+</html>

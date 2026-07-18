@@ -1,206 +1,210 @@
-const button = document.getElementById("startStory");
+/* ==========================================
+   Our First Anniversary
+   Main Script
+   ========================================== */
 
-button.addEventListener("click", () => {
-    document.getElementById("story").scrollIntoView({
-        behavior: "smooth"
-    });
+document.addEventListener("DOMContentLoaded", () => {
+
+    initStars();
+    initPetals();
+    initMusic();
+    initPageTransition();
+
 });
 
-const observer = new IntersectionObserver(entries => {
+/* ==========================================
+   STARS
+   ========================================== */
 
-    entries.forEach(entry => {
+function initStars(){
 
-        if(entry.isIntersecting){
+    if(document.querySelector(".stars")) return;
 
-            entry.target.animate([
-                {opacity:0,transform:'translateY(60px)'},
-                {opacity:1,transform:'translateY(0)'}
-            ],{
-                duration:900,
-                fill:'forwards'
-            });
+    const stars = document.createElement("div");
+
+    stars.className = "stars";
+
+    document.body.prepend(stars);
+
+}
+
+/* ==========================================
+   PETALS
+   ========================================== */
+
+function initPetals(){
+
+    if(document.querySelector(".petals")) return;
+
+    const petals = document.createElement("div");
+
+    petals.className = "petals";
+
+    document.body.appendChild(petals);
+
+}
+
+/* ==========================================
+   MUSIC
+   ========================================== */
+
+function initMusic(){
+
+    const button = document.getElementById("musicButton");
+
+    if(!button) return;
+
+    const audio = new Audio(CONFIG.music.file);
+
+    audio.loop = CONFIG.music.loop;
+
+    let playing = false;
+
+    button.addEventListener("click",()=>{
+
+        if(playing){
+
+            audio.pause();
+
+            button.innerHTML="🎵";
+
+        }else{
+
+            audio.play();
+
+            button.innerHTML="⏸";
 
         }
 
+        playing=!playing;
+
     });
 
-},{threshold:.3});
+}
 
-document.querySelectorAll(".story-card").forEach(card=>{
-    observer.observe(card);
-});
+/* ==========================================
+   PAGE TRANSITION
+   ========================================== */
 
+function initPageTransition(){
 
-const gift = document.getElementById("gift");
-const message = document.getElementById("secretMessage");
+    document.querySelectorAll("a").forEach(link=>{
 
-if(gift && message){
-    gift.addEventListener("click",()=>{
-        gift.style.display="none";
-document.querySelector(".gift-text").style.display="none";
-message.style.display="block";
+        if(link.target==="_blank") return;
+
+        link.addEventListener("click",(e)=>{
+
+            const href=link.getAttribute("href");
+
+            if(!href) return;
+
+            e.preventDefault();
+
+            document.body.style.opacity="0";
+
+            setTimeout(()=>{
+
+                location.href=href;
+
+            },400);
+
+        });
+
     });
-}
-
-
-const startDate = new Date("2024-09-07T00:00:00");
-
-function updateTimer(){
-
-const now = new Date();
-
-const diff = now - startDate;
-
-const totalSeconds = Math.floor(diff/1000);
-const totalMinutes = Math.floor(diff/(1000*60));
-const totalHours = Math.floor(diff/(1000*60*60));
-const totalDays = Math.floor(diff/(1000*60*60*24));
-const totalWeeks = Math.floor(totalDays/7);
-
-let years = now.getFullYear()-startDate.getFullYear();
-let months = now.getMonth()-startDate.getMonth();
-
-if(months<0){
-months+=12;
-years--;
-}
-
-document.getElementById("years").textContent=years;
-document.getElementById("months").textContent=months;
-document.getElementById("weeks").textContent=totalWeeks;
-document.getElementById("days").textContent=totalDays;
-document.getElementById("hours").textContent=totalHours;
-document.getElementById("minutes").textContent=totalMinutes;
-document.getElementById("seconds").textContent=totalSeconds;
 
 }
 
-updateTimer();
-setInterval(updateTimer,1000);
-
+/* ==========================
+   Loader
+========================== */
 
 window.addEventListener("load", () => {
+
     const loader = document.getElementById("loader");
 
     setTimeout(() => {
-        loader.classList.add("loader-hide");
-
-        setTimeout(() => {
-            loader.remove();
-        }, 1500);
-
-    }, 5000);
-});
-
-
-const particleContainer = document.getElementById("particles");
-
-if (particleContainer) {
-    for (let i = 0; i < 30; i++) {
-        const p = document.createElement("div");
-        p.className = "particle";
-        p.style.left = Math.random() * 100 + "%";
-        p.style.animationDuration = (8 + Math.random() * 8) + "s";
-        p.style.animationDelay = (Math.random() * 8) + "s";
-        p.style.width = (4 + Math.random() * 6) + "px";
-        p.style.height = p.style.width;
-        particleContainer.appendChild(p);
-    }
-}
-
-
-const petals = document.getElementById("particles");
-
-if(petals){
-
-petals.innerHTML="";
-
-for(let i=0;i<25;i++){
-
-const p=document.createElement("div");
-
-p.className="particle";
-
-p.textContent="🌹";
-
-p.style.left=Math.random()*100+"%";
-
-p.style.animationDuration=(8+Math.random()*8)+"s";
-
-p.style.animationDelay=(Math.random()*8)+"s";
-
-p.style.fontSize=(18+Math.random()*18)+"px";
-
-petals.appendChild(p);
-
-}
-
-}
-
-
-function createHeartBurst(){
-
-for(let i=0;i<40;i++){
-
-const heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.textContent="❤️";
-
-heart.style.left=(window.innerWidth/2+(Math.random()*300-150))+"px";
-
-heart.style.top=(window.innerHeight/2+(Math.random()*200-100))+"px";
-
-heart.style.animationDuration=(2+Math.random()*2)+"s";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},4000);
-
-}
-
-}
-
-const giftButton=document.getElementById("gift");
-
-if(giftButton){
-
-giftButton.addEventListener("click",createHeartBurst);
-
-}
-
-
-const music=document.getElementById("bgMusic");
-const musicBtn=document.getElementById("musicBtn");
-
-if(music && musicBtn){
-
-music.volume=0.4;
-
-musicBtn.addEventListener("click",async()=>{
-
-try{
-
-if(music.paused){
-
-await music.play();
-musicBtn.textContent="🔊";
-
-}else{
-
-music.pause();
-musicBtn.textContent="🎵";
-
-}
-
-}catch(e){
-console.log(e);
-}
+        loader.classList.add("hide");
+    }, 17000);
 
 });
 
+/* ==========================
+   Stars
+========================== */
+
+for(let i=0;i<120;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"vw";
+
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.animationDelay=Math.random()*2+"s";
+
+    document.body.appendChild(star);
+
 }
+
+/* ==========================
+   Petals
+========================== */
+
+setInterval(()=>{
+
+    const petal=document.createElement("div");
+
+    petal.className="petal";
+
+    petal.style.left=Math.random()*100+"vw";
+
+    petal.style.animationDuration=(5+Math.random()*5)+"s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(()=>petal.remove(),10000);
+
+},700);
+
+
+window.addEventListener("load",()=>{
+
+    const loader=document.getElementById("loader");
+
+    const music=new Audio("assets/music/song.mp3");
+
+    music.loop=true;
+
+    setTimeout(()=>{
+
+        loader.classList.add("hide");
+
+        music.play().catch(()=>{
+
+            console.log("Autoplay blocked until user interaction.");
+
+        });
+
+    },17000);
+
+});
+
+
+document.addEventListener("pointermove",(e)=>{
+
+    const s=document.createElement("div");
+
+    s.className="sparkle";
+
+    s.style.left=e.clientX+"px";
+
+    s.style.top=e.clientY+"px";
+
+    document.body.appendChild(s);
+
+    setTimeout(()=>s.remove(),800);
+
+});
 

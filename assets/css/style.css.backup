@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --bg:#0b0b0b;
+  --surface:#151515;
+  --card:rgba(255,255,255,.05);
+
+  --gold:#d4af37;
+  --rose:#ff5c8a;
+  --text:#f5f5f5;
+  --muted:#bdbdbd;
+
+  --border:rgba(255,255,255,.08);
+
+  --radius:22px;
+
+  --shadow:0 0 35px rgba(212,175,55,.18);
+
+  --transition:.35s ease;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+.chapter{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+h1,h2,h3{
+  font-family:'Cinzel',serif;
+  color:var(--gold);
+  line-height:1.2;
+}
+
+h1{
+  font-size:clamp(2.4rem,8vw,4rem);
+}
+
+h2{
+  font-size:clamp(2rem,6vw,3rem);
+}
+
+p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:1rem;
+  max-width:700px;
+  margin:18px auto;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  margin-top:25px;
+  padding:14px 32px;
+
+  background:var(--gold);
+  color:#000;
+
+  border-radius:999px;
+
+  font-weight:600;
+
+  transition:var(--transition);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+
+.card{
+  width:100%;
+  max-width:800px;
+
+  padding:35px;
+
+  background:var(--card);
+
+  border:1px solid var(--border);
+
+  border-radius:var(--radius);
+
+  backdrop-filter:blur(12px);
+}
+
+.chapter-title{
+  color:var(--rose);
+  font-size:.95rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+/* ========= CHAPTER HEADER ========= */
+
+.chapter-progress{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid var(--gold);
+    border-radius:999px;
+    color:var(--gold);
+    margin-bottom:25px;
+    font-size:.9rem;
+    letter-spacing:2px;
+}
+
+/* ========= NAVIGATION ========= */
+
+.chapter-nav{
+    width:100%;
+    max-width:900px;
+    margin:60px auto 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 24px;
+    border-radius:999px;
+    background:transparent;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    background:var(--gold);
+    color:#000;
+    box-shadow:var(--shadow);
+}
+
+/* ========= MUSIC ========= */
+
+.music-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:none;
+    background:var(--gold);
+    color:#000;
+    font-size:22px;
+    cursor:pointer;
+    z-index:9999;
+    box-shadow:var(--shadow);
+}
+
+/* ========= ANIMATIONS ========= */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.glow{
+    animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px rgba(212,175,55,.2);
+    }
+    to{
+        text-shadow:0 0 30px rgba(212,175,55,.8);
+    }
+}
+
+/* ========= STARS ========= */
+
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+    background-image:
+        radial-gradient(#ffffff 1px, transparent 1px);
+    background-size:50px 50px;
+    opacity:.15;
+}
+
+/* ========= PETALS ========= */
+
+.petals{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+}
+
+
+/* ==========================================
+   MODULE 3 : ANIMATIONS & PAGE TRANSITIONS
+   ========================================== */
+
+/* Fade In */
+.fade-in{
+    animation:fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* Zoom */
+.zoom-in{
+    animation:zoomIn .8s ease forwards;
+}
+
+@keyframes zoomIn{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Floating */
+.float{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+/* Heart Beat */
+.heartbeat{
+    animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    25%{
+        transform:scale(1.08);
+    }
+    50%{
+        transform:scale(.98);
+    }
+    75%{
+        transform:scale(1.08);
+    }
+}
+
+/* Page Transition */
+
+body{
+    animation:pageFade .6s ease;
+}
+
+@keyframes pageFade{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+/* Selection */
+
+::selection{
+    background:var(--gold);
+    color:#000;
+}
+
+
+/* ==========================
+   Loader
+========================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    transition:opacity 1s ease,visibility 1s ease;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-content{
+    text-align:center;
+    max-width:420px;
+    padding:20px;
+}
+
+.loader-heart{
+    font-size:70px;
+    color:#ff4d6d;
+    animation:pulse 1.5s infinite;
+}
+
+.loader-title{
+    margin-top:15px;
+    font-size:42px;
+    color:#fff;
+}
+
+.loader-title span{
+    color:#ff4d6d;
+}
+
+.loader-subtitle{
+    margin-top:15px;
+    color:#d4af37;
+    line-height:1.8;
+    font-size:20px;
+}
+
+.loader-quote{
+    margin:25px 0;
+    color:#cccccc;
+    font-style:italic;
+    line-height:1.7;
+}
+
+.loader-bar{
+    width:100%;
+    height:8px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#222;
+}
+
+.loader-progress{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ff4d6d,#d4af37);
+    animation:loading 4s linear forwards;
+}
+
+.loader-loading{
+    margin-top:15px;
+    color:#ffffff;
+    letter-spacing:2px;
+}
+
+@keyframes loading{
+    from{width:0;}
+    to{width:100%;}
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+/* ==========================
+   Animated Stars
+========================== */
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation:twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+        transform:scale(1);
+    }
+    50%{
+        opacity:1;
+        transform:scale(2);
+    }
+}
+
+/* ==========================
+   Rose Petals
+========================== */
+
+.petal{
+    position:fixed;
+    top:-40px;
+    width:12px;
+    height:18px;
+    background:#ff4d6d;
+    border-radius:50% 50% 50% 0;
+    opacity:.75;
+    animation:fall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-40px) rotate(0deg);
+    }
+
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* ==========================
+   Gold Glow
+========================== */
+
+.loader-title{
+    background:linear-gradient(90deg,#fff7c2,#ffd700,#fff7c2);
+    background-size:300% auto;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:goldGlow 3s linear infinite;
+    text-shadow:0 0 15px rgba(255,215,0,.4);
+}
+
+@keyframes goldGlow{
+    from{
+        background-position:0% center;
+    }
+    to{
+        background-position:300% center;
+    }
+}
+
+
+/* ==========================
+   Neon Heart
+========================== */
+
+.loader-heart{
+
+    filter:
+        drop-shadow(0 0 8px #ff4d6d)
+        drop-shadow(0 0 18px #ff4d6d)
+        drop-shadow(0 0 30px #ff4d6d);
+
+    animation:heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    20%{
+        transform:scale(1.18);
+    }
+
+    40%{
+        transform:scale(.95);
+    }
+
+    60%{
+        transform:scale(1.25);
+    }
+
+    80%{
+        transform:scale(1);
+    }
+
+}
+
+
+/* ==========================
+   Sparkles
+========================== */
+
+.sparkle{
+
+    position:fixed;
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#ffd700;
+
+    pointer-events:none;
+
+    animation:spark .8s linear forwards;
+
+    box-shadow:0 0 12px #ffd700;
+
+}
+
+@keyframes spark{
+
+    to{
+
+        opacity:0;
+
+        transform:translateY(-30px) scale(0);
+
+    }
+
+}
+
