@@ -6,8 +6,8 @@
 const CONFIG = {
 
     couple: {
-        first: "Bhushan",
-        second: "Kajal"
+        first: "LADDU",
+        second: "TOBBO"
     },
 
     anniversary: {
