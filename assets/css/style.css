@@ -1661,3 +1661,202 @@ h2{
 
 }
 
+
+.loader-heart-name{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:4rem;
+    color:#ff3b6b;
+    text-shadow:
+        0 0 10px #ff3b6b,
+        0 0 20px #ff3b6b,
+        0 0 40px #ff3b6b,
+        0 0 60px #ff3b6b;
+    animation:heartbeat 1.4s infinite;
+    margin:20px 0;
+    opacity:1 !important;
+    filter:none !important;
+}
+
+
+/* ===== Minute Celebration Popup ===== */
+
+.minute-popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(.9);
+    width:min(90%,520px);
+    padding:28px 24px;
+    border-radius:24px;
+    text-align:center;
+    color:#fff;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 0 40px rgba(255,105,180,.35);
+    opacity:0;
+    visibility:hidden;
+    z-index:99999;
+    transition:all 1s ease;
+}
+
+.minute-popup.show{
+    opacity:1;
+    visibility:visible;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.minute-popup .heart{
+    font-size:3rem;
+    display:block;
+    margin-bottom:12px;
+    animation:minuteHeartbeat 1.2s infinite;
+}
+
+.minute-popup p{
+    font-size:1.35rem;
+    line-height:1.6;
+    margin:0;
+}
+
+@keyframes minuteHeartbeat{
+    0%,100%{transform:scale(1);}
+    25%{transform:scale(1.18);}
+    50%{transform:scale(.95);}
+    75%{transform:scale(1.12);}
+}
+
+
+/* ===========================
+   Every Second With You Page
+=========================== */
+
+.our-time-page{
+    background:#000;
+    color:#fff;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+.our-time-container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:60px 20px 80px;
+    text-align:center;
+}
+
+.time-heart{
+    font-size:4rem;
+    animation:heartbeat 1.5s infinite;
+    margin-bottom:20px;
+}
+
+.our-time-container h1{
+    font-size:3rem;
+    background:linear-gradient(90deg,#ff7eb3,#ff4fd8,#ffd700);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:15px;
+}
+
+.time-subtitle{
+    max-width:700px;
+    margin:0 auto 45px;
+    font-size:1.15rem;
+    color:#ddd;
+    line-height:1.8;
+}
+
+.time-counter{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:22px;
+    margin-bottom:50px;
+}
+
+.time-card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:22px;
+    padding:30px 10px;
+    transition:.35s;
+    box-shadow:0 0 25px rgba(255,105,180,.18);
+}
+
+.time-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(255,105,180,.45);
+}
+
+.time-card span{
+    display:block;
+    font-size:3rem;
+    font-weight:700;
+    color:#fff;
+}
+
+.time-card small{
+    display:block;
+    margin-top:12px;
+    font-size:1rem;
+    color:#ffb6d9;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.our-time-container blockquote{
+    max-width:850px;
+    margin:45px auto;
+    font-size:1.3rem;
+    line-height:1.8;
+    font-style:italic;
+    color:#f5d8e8;
+}
+
+.next-btn{
+    display:inline-block;
+    padding:18px 42px;
+    border-radius:999px;
+    background:linear-gradient(90deg,#ff4fd8,#ff7eb3);
+    color:#fff;
+    text-decoration:none;
+    font-size:1.15rem;
+    font-weight:600;
+    box-shadow:0 0 30px rgba(255,105,180,.45);
+    transition:.35s;
+}
+
+.next-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 45px rgba(255,105,180,.7);
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    25%{transform:scale(1.15);}
+    50%{transform:scale(.95);}
+    75%{transform:scale(1.1);}
+}
+
+@media (max-width:768px){
+
+    .our-time-container h1{
+        font-size:2.2rem;
+    }
+
+    .time-card span{
+        font-size:2.3rem;
+    }
+
+    .our-time-container blockquote{
+        font-size:1.05rem;
+    }
+
+}
+

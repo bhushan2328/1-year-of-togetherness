@@ -10,9 +10,10 @@ const chapters = [
   { title: "Our Memories", file: "our-memories.html" },
   { title: "A Letter to You", file: "letter.html" },
   { title: "Why I Love You", file: "why-i-love-you.html" },
-  { title: "A Little Surprise", file: "surprise.html" },
   { title: "Our Journey", file: "our-journey.html" },
-  { title: "Forever & Always", file: "forever.html" }
+  { title: "Forever & Always", file: "forever.html" },
+  { title: "Every Second With You", file: "our-time.html" },
+  { title: "A Little Surprise", file: "surprise.html" }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -128,15 +129,17 @@ function createNavigation(chapter){
 
 function createMusicButton(){
 
+    if(!window.location.pathname.endsWith("our-time.html")){
+        return;
+    }
+
     if(document.getElementById("musicButton"))
         return;
 
     const button = document.createElement("button");
 
     button.id = "musicButton";
-
     button.className = "music-btn";
-
     button.innerHTML = "🎵";
 
     document.body.appendChild(button);

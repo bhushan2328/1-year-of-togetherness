@@ -1,23 +1,29 @@
-const music = document.getElementById("bgMusic");
+document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bgMusic");
+    const button = document.getElementById("musicButton");
 
-const button = document.createElement("button");
-button.id = "musicToggle";
-button.innerHTML = "🎵";
-document.body.appendChild(button);
+    console.log("music:", music);
+    console.log("button:", button);
 
-button.addEventListener("click", () => {
-    if (music.paused) {
-        music.play();
-        button.innerHTML = "🔊";
-    } else {
-        music.pause();
-        button.innerHTML = "🔇";
+    if (!music || !button) {
+        console.error("Missing music or button");
+        return;
     }
+
+    button.addEventListener("click", async () => {
+        console.log("Button clicked");
+        try {
+            if (music.paused) {
+                await music.play();
+                console.log("Playing");
+                button.innerHTML = "🔊";
+            } else {
+                music.pause();
+                console.log("Paused");
+                button.innerHTML = "🎵";
+            }
+        } catch (e) {
+            console.error("Play failed:", e);
+        }
+    });
 });
-
-document.addEventListener("click", () => {
-    if (music.paused) {
-        music.play().catch(() => {});
-        button.innerHTML = "🔊";
-    }
-}, { once: true });
