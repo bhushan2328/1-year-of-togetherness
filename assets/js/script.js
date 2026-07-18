@@ -29,6 +29,11 @@ if (window.location.pathname.endsWith("our-time.html")) {
         minutePopup.querySelector("p").textContent = message;
         minutePopup.classList.add("show");
 
+    clearTimeout(window.minutePopupTimer);
+    window.minutePopupTimer = setTimeout(() => {
+        minutePopup.classList.remove("show");
+    }, 10000);
+
         setTimeout(() => {
             minutePopup.classList.remove("show");
         }, 10000);
